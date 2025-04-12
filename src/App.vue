@@ -3,9 +3,7 @@
 </script>
 
 <template>
-  <div>
-    <h1>Kanban Dashboard</h1>
-  </div>
+  <router-view />
 </template>
 
 <style scoped>
