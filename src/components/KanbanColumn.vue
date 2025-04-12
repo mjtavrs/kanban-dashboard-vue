@@ -37,3 +37,27 @@ onMounted(() => {
         </div>
     </div>
 </template>
+
+<style scoped>
+.kanban-column {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+</style>
