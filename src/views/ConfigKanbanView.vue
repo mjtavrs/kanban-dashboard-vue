@@ -30,11 +30,13 @@ function handleSubmit() {
 </script>
 
 <template>
-    <div class="columns-config-container">
-      <h2 id="columns-config-container-header">
+  <div class="config-container">
+    <div class="config-container-header">
+      <h1>
         Let's configure your Kanban Board!
-      </h2>
-  
+      </h1>
+    </div>
+    <div class="columns-config-container">
       <form @submit.prevent="handleSubmit">
         <label for="columnCount">Number of columns (You can have up to 5 columns):</label>
         <input
@@ -52,7 +54,7 @@ function handleSubmit() {
             :key="index"
             class="column-config"
           >
-            <label>Title of the column {{ index + 1 }}:</label>
+            <label>Title of the Column {{ index + 1 }}:</label>
             <input v-model="columns[index].name" placeholder="Ex: Backlog, To Do, In Progress..." required />
   
             <label>Color:</label>
@@ -70,24 +72,45 @@ function handleSubmit() {
         <button type="submit">Create board</button>
       </form>
     </div>
+  </div>
 </template>
 
 <style scoped>
-  .columns-config-container {
+.config-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  padding-block: 2.5rem;
+  min-height: 100vh;
+
+  .config-container-header {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #ccc;
-    font-family: 'Patrick Hand', cursive;
+    text-align: center;
 
-    #columns-config-container-header {
-      font-size: 1.75rem;
+    h1 {
+      font-size: 4rem;
     }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  .columns-config-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 33%;
+    padding: 2rem;
+    background-color: #fefefe;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.35);
+    -moz-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.35);
+    box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.35);
 
     form {
       align-items: center;
@@ -117,6 +140,7 @@ function handleSubmit() {
           > select {
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 1rem;
             padding-inline: 1rem;
             padding-block: 0.5rem;
           }
@@ -124,12 +148,15 @@ function handleSubmit() {
       }
     
       button {
-        border-radius: 5px;
+        background-color: #1f1f1f;
+        border-radius: 10px;
         border: 1px solid #ccc;
-        font-size: 1.1rem;
-        padding-block: 1rem;
+        color: #f6f6f6;
+        font-size: 1rem;
+        padding-block: 0.8rem;
         padding-inline: 1.2rem;
       }
     }
   }
+}
 </style>
