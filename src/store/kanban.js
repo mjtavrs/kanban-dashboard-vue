@@ -23,5 +23,6 @@ export const useKanbanStore = defineStore('kanban', {
             this.columns = []
             this.tasks = []
         }
-    }
+    },
+    persist: true
 })

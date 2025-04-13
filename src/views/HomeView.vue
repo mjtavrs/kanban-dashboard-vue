@@ -10,11 +10,11 @@ import { PhReadCvLogo, PhGithubLogo } from '@phosphor-icons/vue'
     </div>
     <div class="home-links">
       <div class="home-external-links">
-        <a>
+        <a href="https://en.wikipedia.org/wiki/Kanban" target="_blank">
           <PhReadCvLogo :size="25" />
           Read more about Kanban here
         </a>
-        <a>
+        <a href="https://github.com/mjtavrs/kanban-dashboard-vue" target="_blank">
           <PhGithubLogo :size="25" />
           Visit the project repository
         </a>
