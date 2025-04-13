@@ -1,5 +1,5 @@
 <script setup>
-import { PhReadCvLogo, PhGithubLogo } from '@phosphor-icons/vue'
+import { PhReadCvLogo, PhGithubLogo, PhGear } from '@phosphor-icons/vue'
 </script>
 
 <template>
@@ -11,15 +11,18 @@ import { PhReadCvLogo, PhGithubLogo } from '@phosphor-icons/vue'
     <div class="home-links">
       <div class="home-external-links">
         <a href="https://en.wikipedia.org/wiki/Kanban" target="_blank">
-          <PhReadCvLogo :size="25" />
+          <PhReadCvLogo :size="30" color="white" />
           Read more about Kanban here
         </a>
         <a href="https://github.com/mjtavrs/kanban-dashboard-vue" target="_blank">
-          <PhGithubLogo :size="25" />
+          <PhGithubLogo :size="30" color="white" />
           Visit the project repository
         </a>
       </div>
-      <router-link to="/configure">Configure your Kanban Board</router-link>
+      <router-link to="/configure" id="configure-link">
+        <PhGear :size="35" id="configure-icon" />
+        Create your Kanban Board
+      </router-link>
     </div>
   </div>
 </template>
@@ -51,19 +54,65 @@ import { PhReadCvLogo, PhGithubLogo } from '@phosphor-icons/vue'
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2.5rem;
 
     .home-external-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
 
       a {
         align-items: center;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        color: #f6f6f6;
         display: flex;
         gap: 0.5rem;
+        padding-block: 0.8rem;
+        padding-inline: 1.2rem;
+        text-decoration: none;
+        transition: transform 300ms, box-shadow 300ms;
+
+        &:hover {
+          -webkit-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.35);
+          -moz-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.35);
+          box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.35);
+          transform: rotate(-3deg);
+        }
+
+        &:last-child:hover {
+          transform: rotate(3deg);
+        }
       }
     }
 
+    #configure-link {
+      align-items: center;
+      background-color: #fff;
+      border: 2px solid #1f1f1f;
+      border-radius: 10px;
+      color: #1f1f1f;
+      display: flex;
+      font-size: 1.2rem;
+      gap: 0.5rem;
+      padding-block: 0.8rem;
+      padding-inline: 1.2rem;
+      text-decoration: none;
+      transition: box-shadow 300ms;
+
+      &:hover {
+          -webkit-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
+          -moz-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
+          box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
+      }
+
+      #configure-icon {
+        transition: transform 400ms ease-in-out;
+      }
+
+      &:hover #configure-icon {
+        transform: rotate(90deg);
+      }
+    }
   }
 }
 </style>
