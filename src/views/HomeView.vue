@@ -21,7 +21,7 @@ import { PhReadCvLogo, PhGithubLogo, PhGear } from '@phosphor-icons/vue'
       </div>
       <router-link to="/configure" id="configure-link">
         <PhGear :size="35" id="configure-icon" />
-        Create your Kanban Board
+        Get started with your Kanban Board!
       </router-link>
     </div>
   </div>
