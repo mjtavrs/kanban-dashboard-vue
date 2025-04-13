@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@phosphor-icons/vue": "^2.2.1",
     "pinia": "^3.0.2",
     "pinia-plugin-persistedstate": "^4.2.0",
     "sortablejs": "^1.15.6",

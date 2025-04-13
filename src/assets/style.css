@@ -9,6 +9,7 @@
 
 * {
     box-sizing: border-box;
+    color: #1f1f1f;
     font-family: 'Patrick Hand', cursive;
     margin: 0;
     padding: 0;
@@ -16,4 +17,17 @@
 
 button {
     cursor: pointer;
+}
+
+input {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1.15rem;
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
+    width: 100%;
+    
+    &:focus {
+        outline: none;
+    }
 }
