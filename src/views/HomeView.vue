@@ -1,5 +1,5 @@
 <script setup>
-import { PhReadCvLogo, PhGithubLogo, PhGear } from '@phosphor-icons/vue'
+import { PhReadCvLogo, PhGithubLogo, PhGridNine } from '@phosphor-icons/vue'
 </script>
 
 <template>
@@ -19,8 +19,8 @@ import { PhReadCvLogo, PhGithubLogo, PhGear } from '@phosphor-icons/vue'
           Visit the project repository
         </a>
       </div>
-      <router-link to="/configure" id="configure-link">
-        <PhGear :size="35" id="configure-icon" />
+      <router-link to="/board" id="configure-link">
+        <PhGridNine :size="35" />
         Get started with your Kanban Board!
       </router-link>
     </div>
@@ -103,14 +103,6 @@ import { PhReadCvLogo, PhGithubLogo, PhGear } from '@phosphor-icons/vue'
           -webkit-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
           -moz-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
           box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
-      }
-
-      #configure-icon {
-        transition: transform 400ms ease-in-out;
-      }
-
-      &:hover #configure-icon {
-        transform: rotate(90deg);
       }
     }
   }

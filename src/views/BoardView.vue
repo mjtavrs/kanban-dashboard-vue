@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useKanbanStore } from '../store/kanban'
+import { PhCheckSquareOffset } from '@phosphor-icons/vue'
 import KanbanColumn from '../components/KanbanColumn.vue'
 
 const kanban = useKanbanStore()
@@ -14,7 +15,10 @@ function tasksByColumn(name) {
     <div class="board-container">
         <header>
             <h1>Kanban Board</h1>
-            <button>+ Add new task</button>
+            <button>
+                <PhCheckSquareOffset :size="30" />
+                Add new task
+            </button>
         </header>
 
         <main>
@@ -32,18 +36,30 @@ function tasksByColumn(name) {
 .board-container {
     padding: 2rem;
     font-family: 'Patrick Hand', cursive;
+    width: 100%;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    
+        h1 {
+    
+        }
+    
+        button {
+    
+        }
+    }
+    
+    main {
+        /* display: flex;
+        gap: 1rem;
+        flex-wrap: wrap; */
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-main {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
 </style>

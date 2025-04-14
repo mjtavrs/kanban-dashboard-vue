@@ -25,9 +25,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="kanban-column" :style="{ backgroundColor: column.color }" ref="container">
-        <h2>{{ column.name }}</h2>
-
+    <div class="kanban-column">
+        <div class="kanban-column-header" :style="{ backgroundColor: column.color }" ref="container">
+            <h2>{{ column.name }}</h2>
+        </div>
         <div class="task-list" ref="taskList">
             <KanbanPostIt
                 v-for="task in tasks"
@@ -40,24 +41,24 @@ onMounted(() => {
 
 <style scoped>
 .kanban-column {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
-    padding: 1rem;
-    border-radius: 8px;
+    border: 1px solid red;
     color: #333;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-}
+    
+    .kanban-column-header {
+        padding: 1rem;
 
-h2 {
-    margin-top: 0;
-}
-
-.task-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+        h2 {
+            margin-top: 0;
+        }
+    }
+    
+    .task-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
 </style>
