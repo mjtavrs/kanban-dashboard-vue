@@ -53,13 +53,7 @@ function tasksByColumn(name) {
 <style scoped>
 .board-container {
     padding: 2rem;
-    font-family: 'Patrick Hand', cursive;
     width: 100%;
-
-    /* .tooltip-wrapper {
-        display: inline-block;
-        cursor: not-allowed;
-    } */
 
     header {
         display: flex;
@@ -84,15 +78,11 @@ function tasksByColumn(name) {
                 display: flex;
                 font-size: 1rem;
                 gap: 0.8rem;
-                padding-block: 0.6rem;
-                padding-inline: 1.2rem;
-                transition: box-shadow 200ms;
-                outline: none;  
+                padding: 0.6rem 1.2rem;
+                transition: background-color 300ms; 
     
                 &:hover {
-                    -webkit-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
-                    -moz-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
-                    box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
+                    background-color: #444;
                 }
 
                 &:disabled {
@@ -103,6 +93,11 @@ function tasksByColumn(name) {
 
             #clear-button {
                 background-color: firebrick;
+                transition: background-color 300ms;
+                
+                &:hover {
+                    background-color: indianred;
+                }
             }
         }
 

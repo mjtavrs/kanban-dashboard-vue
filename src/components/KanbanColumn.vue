@@ -29,7 +29,7 @@ onMounted(() => {
     <div class="kanban-column">
         <div class="kanban-column-header" :style="{ backgroundColor: column.color }" ref="container">
             <h2>{{ column.name }}</h2>
-            <span v-tippy="{ content: column.description, placement: 'top', arrow: true, delay: 50, theme: 'light-border' }">
+            <span v-tippy="{ content: column.description, placement: 'top-end', arrow: true, delay: 50, theme: 'light-border' }">
                 <PhQuestionMark :size="20" weight="bold" />
             </span>
         </div>

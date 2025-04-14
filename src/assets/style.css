@@ -30,7 +30,9 @@ input {
     padding-block: 0.75rem;
     padding-inline: 1rem;
     width: 100%;
-    
+}
+
+input, button {
     &:focus {
         outline: none;
     }

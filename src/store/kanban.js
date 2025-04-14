@@ -41,6 +41,8 @@ export const useKanbanStore = defineStore('kanban', {
             }
             
             this.tasks.push({ ...task, id: Date.now() })
+
+            // Will add more info for the tasks
         },
         moveTask(taskId, newColumnName) {
             const task = this.tasks.find(task => task.id === taskId)
@@ -48,6 +50,13 @@ export const useKanbanStore = defineStore('kanban', {
         },
         clearTasks() {
             this.tasks = []
+        },
+        removeTask(taskId) {
+            this.tasks = this.tasks.filter(task => task.id !== taskId)
+        },
+        editTask(taskId, newTitle) {
+            const task = this.tasks.find(task => task.id === taskId)
+            if (task) task.title = newTitle
         }
     },
     getters: {
