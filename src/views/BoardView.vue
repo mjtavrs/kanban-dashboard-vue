@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useKanbanStore } from '../store/kanban'
-import { PhCheckSquareOffset } from '@phosphor-icons/vue'
+import { PhCheckSquareOffset, PhTrash } from '@phosphor-icons/vue'
 import KanbanColumn from '../components/KanbanColumn.vue'
 import NewTaskModal from '../components/NewTaskModal.vue'
 
@@ -16,20 +16,22 @@ function tasksByColumn(name) {
 <template>
     <div class="board-container">
         <header>
-            <h1>Kanban Board</h1>
-            <button @click="showNewTaskModal = true">
-                <PhCheckSquareOffset :size="30" />
-                Add new task
-            </button>
+            <h1>Your Kanban Board</h1>
+            <div>
+                <button @click="showNewTaskModal = true">
+                    <PhCheckSquareOffset :size="30" color="white" />
+                    Add new task
+                </button>
+                <button @click="kanban.clearTasks">
+                    <PhTrash :size="30" color="white" weight="fill" />
+                    Remove all tasks
+                </button>
+            </div>
         </header>
 
         <main>
-            <KanbanColumn 
-                v-for="column in kanban.columns"
-                :key="column.name"
-                :column="column"
-                :tasks="tasksByColumn(column.name)"
-            />
+            <KanbanColumn v-for="column in kanban.columns" :key="column.name" :column="column"
+                :tasks="tasksByColumn(column.name)" />
         </main>
 
         <NewTaskModal v-if="showNewTaskModal" @close="showNewTaskModal = false" />
@@ -48,20 +50,45 @@ function tasksByColumn(name) {
         align-items: center;
         margin-bottom: 2rem;
     
-        /* h1 {
-    
+        h1 {
+            font-size: 3rem;
         }
+
+        div {
+            display: flex;
+            gap: 0.5rem;
+            button {
+                align-items: center;
+                background-color: #1f1f1f;
+                border: none;
+                border-radius: 10px;
+                color: #f6f6f6;
+                display: flex;
+                font-size: 1rem;
+                gap: 0.8rem;
+                padding-block: 0.6rem;
+                padding-inline: 1.2rem;
+                transition: transform 300ms;
     
-        button {
-    
-        } */
+                &:hover {
+                    -webkit-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.35);
+                    -moz-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.35);
+                    box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.35);
+                    transform: rotate(-3deg);
+                }
+            }
+
+            button + button {
+                background-color: firebrick;
+                border: none;
+            }
+        }
+
     }
     
     main {
-        /* display: flex;
-        gap: 1rem;
-        flex-wrap: wrap; */
         display: grid;
+        gap: 0.5rem;
         grid-template-columns: repeat(5, 1fr);
     }
 }

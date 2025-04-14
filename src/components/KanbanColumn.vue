@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import Sortable from 'sortablejs'
 import { useKanbanStore } from '../store/kanban'
+import { PhQuestionMark } from '@phosphor-icons/vue'
 import KanbanPostIt from './KanbanPostIt.vue'
 
 const props = defineProps({
@@ -28,37 +29,48 @@ onMounted(() => {
     <div class="kanban-column">
         <div class="kanban-column-header" :style="{ backgroundColor: column.color }" ref="container">
             <h2>{{ column.name }}</h2>
+            <span v-tippy="{ content: column.description, placement: 'top', arrow: true, delay: 50, theme: 'light-border' }">
+                <PhQuestionMark :size="20" weight="bold" />
+            </span>
         </div>
         <div class="task-list" ref="taskList">
-            <KanbanPostIt
-                v-for="task in tasks"
-                :key="task.id"
-                :task="task"
-            />
+            <KanbanPostIt v-for="task in tasks" :key="task.id" :task="task" />
         </div>
     </div>
 </template>
 
 <style scoped>
 .kanban-column {
-    border: 1px solid red;
     color: #333;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    height: calc(100vh - 11rem);
     
     .kanban-column-header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         padding: 1rem;
 
-        h2 {
-            margin-top: 0;
+        span {
+            background-color: white;
+            border-radius: 9999px;
+            padding: 0.5rem;
+            line-height: 0;
         }
     }
     
     .task-list {
+        background-color: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        height: 100%;
+        padding: 0.5rem;
     }
 }
 </style>
