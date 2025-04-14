@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue'
 import { useKanbanStore } from '../store/kanban'
 import { PhX, PhNotePencil } from '@phosphor-icons/vue'
 
@@ -7,21 +8,41 @@ const props = defineProps({
     columnColor: String
 })
 
+const editing = ref(false)
+const newTitle = ref(props.task.title)
+
 const kanban = useKanbanStore()
+
+function startEditing() {
+    editing.value = true
+    newTitle.value = props.task.title
+}
+
+function saveTitle() {
+    if (newTitle.value.trim()) {
+        kanban.editTask(props.task.id, newTitle.value.trim())
+        editing.value = false
+    }
+}
 </script>
 
 <template>
     <div class="post-it" :data-id="task.id" :style="{ borderLeft: `5px solid ${columnColor}` }">
         <div class="post-it-header">
-            <p class="post-it-header-title">{{ task.title }}</p>
+            <div class="post-it-header-title">
+                <template v-if="editing">
+                    <input v-model="newTitle" @keyup.enter="saveTitle" @blur="saveTitle" class="edit-input" />
+                </template>
+                <template v-else>
+                    <p>{{ task.title }}</p>
+                </template>
+            </div>
             <div class="post-it-header-actions">
-                <!-- Bellow still editing -->
                 <span
-                    v-tippy="{ content: 'Edit task', placement: 'top', arrow: true, delay: 50, theme: 'light-border' }"
-                    @click="kanban.editTask(task.id)">
+                    v-if="!editing" v-tippy="{ content: 'Edit task', placement: 'top', arrow: true, delay: 50, theme: 'light-border' }"
+                    @click="startEditing">
                     <PhNotePencil :size="20" />
                 </span>
-                <!-- Above still editing -->
                 <span
                     v-tippy="{ content: 'Remove task', placement: 'top', arrow: true, delay: 50, theme: 'light-border' }"
                     @click="kanban.removeTask(task.id)">
@@ -57,6 +78,15 @@ const kanban = useKanbanStore()
         .post-it-header-title {
             font-size: 1.25rem;
             font-weight: 600;
+
+            .edit-input {
+                font-family: inherit;
+                font-size: 1rem;
+                padding: 0.25rem 0.5rem;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+                width: 100%;
+            }
         }
 
         .post-it-header-actions {
