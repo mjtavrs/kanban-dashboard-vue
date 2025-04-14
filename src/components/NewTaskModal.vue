@@ -16,7 +16,7 @@ function createTask() {
 
     kanban.addTask({
         title: title.value,
-        columnName: 'Backlog'
+        columnName: 'New'
     })
 
     title.value = ''

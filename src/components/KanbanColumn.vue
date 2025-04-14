@@ -34,7 +34,7 @@ onMounted(() => {
             </span>
         </div>
         <div class="task-list" ref="taskList">
-            <KanbanPostIt v-for="task in tasks" :key="task.id" :task="task" />
+            <KanbanPostIt v-for="task in tasks" :key="task.id" :task="task" :columnColor="column.color" />
         </div>
     </div>
 </template>
@@ -74,9 +74,9 @@ onMounted(() => {
         border-bottom-right-radius: 10px;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.2rem;
         height: 100%;
-        padding: 0.5rem;
+        padding-block: 0.3rem;
     }
 }
 </style>
