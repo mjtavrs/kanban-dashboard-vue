@@ -24,6 +24,10 @@ import { PhReadCvLogo, PhGithubLogo, PhGridNine } from '@phosphor-icons/vue'
         Get started with your Kanban Board!
       </router-link>
     </div>
+    <footer>
+      <p>Coded with a lot of ☕ by <a href="https://github.com/mjtavrs" target="_blank">Marcos Tavares</a></p>
+      <p>Version 1.0 &copy; 2025</p>
+    </footer>
   </div>
 </template>
 
@@ -103,6 +107,20 @@ import { PhReadCvLogo, PhGithubLogo, PhGridNine } from '@phosphor-icons/vue'
           -webkit-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
           -moz-box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
           box-shadow: 0px 0px 20px 1px rgba(48,48,48,0.20);
+      }
+    }
+  }
+
+  footer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+    p {
+      a {
+        font-weight: 700;
+        text-decoration: none;
       }
     }
   }
