@@ -2,13 +2,16 @@ import { defineStore } from 'pinia'
 
 export const useKanbanStore = defineStore('kanban', {
     state: () => ({
-        columns: [],
+        columns: [
+            { name: 'Backlog', color: 'gainsboro' },
+            { name: 'To-do', color: 'darkorange' },
+            { name: 'In Progress', color: 'lightblue' },
+            { name: 'Testing', color: 'plum' },
+            { name: 'Done', color: 'darkseagreen' }
+        ],
         tasks: []
     }),
     actions: {
-        configureColumns(columns) {
-            this.columns = columns
-        },
         addTask(task) {
             this.tasks.push({ ...task, id: Date.now() })
         },
@@ -17,10 +20,6 @@ export const useKanbanStore = defineStore('kanban', {
             if (task) task.columnName = newColumnName
         },
         clearTasks() {
-            this.tasks = []
-        },
-        clearBoard() {
-            this.columns = []
             this.tasks = []
         }
     },
