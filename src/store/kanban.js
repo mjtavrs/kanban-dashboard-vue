@@ -33,6 +33,13 @@ export const useKanbanStore = defineStore('kanban', {
     }),
     actions: {
         addTask(task) {
+            const taskCount = this.tasks.filter(task => task.columnName === task.columnName).length
+
+            if (taskCount => 6) {
+                alert(`The column "${task.columnName}" reached the 6 tasks limit.`)
+                return
+            }
+            
             this.tasks.push({ ...task, id: Date.now() })
         },
         moveTask(taskId, newColumnName) {
@@ -41,6 +48,14 @@ export const useKanbanStore = defineStore('kanban', {
         },
         clearTasks() {
             this.tasks = []
+        }
+    },
+    getters: {
+        tasksByColumn: (state) => (columnName) => {
+            return state.tasks.filter(task => task.columnName === columnName)
+        },
+        columnTaskCount: (state) => (columnName) => {
+            return state.tasks.filter(task => task.columnName === columnName).length
         }
     },
     persist: true
