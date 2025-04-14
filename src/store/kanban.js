@@ -39,10 +39,14 @@ export const useKanbanStore = defineStore('kanban', {
                 alert(`The column "${task.columnName}" reached the 6 tasks limit.`)
                 return
             }
-            
-            this.tasks.push({ ...task, id: Date.now() })
 
-            // Will add more info for the tasks
+            const createdAt = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            })
+
+            this.tasks.push({ ...task, id: Date.now(), createdAt })
         },
         moveTask(taskId, newColumnName) {
             const task = this.tasks.find(task => task.id === taskId)

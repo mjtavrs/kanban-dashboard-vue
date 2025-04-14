@@ -13,7 +13,7 @@ const kanban = useKanbanStore()
 <template>
     <div class="post-it" :data-id="task.id" :style="{ borderLeft: `5px solid ${columnColor}` }">
         <div class="post-it-header">
-            <p>{{ task.title }}</p>
+            <p class="post-it-header-title">{{ task.title }}</p>
             <div class="post-it-header-actions">
                 <!-- Bellow still editing -->
                 <span
@@ -29,12 +29,18 @@ const kanban = useKanbanStore()
                 </span>
             </div>
         </div>
+        <div class="post-it-metadata">
+            <p>Created on: {{ task.createdAt }}</p>
+        </div>
     </div>
 </template>
 
 <style scoped>
 .post-it {
     background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     font-size: 1rem;
     padding-block: 1rem;
     padding-inline: 0.5rem;
@@ -47,6 +53,11 @@ const kanban = useKanbanStore()
         align-items: center;
         display: flex;
         justify-content: space-between;
+
+        .post-it-header-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
 
         .post-it-header-actions {
             display: flex;
