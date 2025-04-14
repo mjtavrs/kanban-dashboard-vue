@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useKanbanStore } from '../store/kanban'
 import { PhCheckSquareOffset, PhTrash } from '@phosphor-icons/vue'
+import { Tippy } from 'vue-tippy'
 import KanbanColumn from '../components/KanbanColumn.vue'
 import NewTaskModal from '../components/NewTaskModal.vue'
 
@@ -18,11 +19,22 @@ function tasksByColumn(name) {
         <header>
             <h1>Kanban Board</h1>
             <div>
-                <button @click="showNewTaskModal = true">
-                    <PhCheckSquareOffset :size="30" color="white" />
-                    Add new task
-                </button>
-                <button @click="kanban.clearTasks">
+                <span class="tooltip-wrapper">
+                    <Tippy v-if="kanban.columnTaskCount('New') >= 6"
+                        content="You cannot add more than 6 tasks per column." theme="light-border"
+                        placement="left-start">
+                        <button disabled>
+                            <PhCheckSquareOffset :size="30" color="white" />
+                            Add new task
+                        </button>
+                    </Tippy>
+
+                    <button v-else @click="showNewTaskModal = true">
+                        <PhCheckSquareOffset :size="30" color="white" />
+                        Add new task
+                    </button>
+                </span>
+                <button @click="kanban.clearTasks" id="clear-button">
                     <PhTrash :size="30" color="white" weight="fill" />
                     Remove all tasks
                 </button>
@@ -44,6 +56,11 @@ function tasksByColumn(name) {
     font-family: 'Patrick Hand', cursive;
     width: 100%;
 
+    /* .tooltip-wrapper {
+        display: inline-block;
+        cursor: not-allowed;
+    } */
+
     header {
         display: flex;
         justify-content: space-between;
@@ -57,6 +74,7 @@ function tasksByColumn(name) {
         div {
             display: flex;
             gap: 0.5rem;
+
             button {
                 align-items: center;
                 background-color: #1f1f1f;
@@ -69,17 +87,22 @@ function tasksByColumn(name) {
                 padding-block: 0.6rem;
                 padding-inline: 1.2rem;
                 transition: box-shadow 200ms;
+                outline: none;  
     
                 &:hover {
                     -webkit-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
                     -moz-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
                     box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
                 }
+
+                &:disabled {
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                }
             }
 
-            button + button {
+            #clear-button {
                 background-color: firebrick;
-                border: none;
             }
         }
 
