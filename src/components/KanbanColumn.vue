@@ -53,6 +53,12 @@ onMounted(() => {
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         padding: 1rem;
+        
+        h2 {
+            color: #f0f0f0;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
 
         span {
             background-color: white;

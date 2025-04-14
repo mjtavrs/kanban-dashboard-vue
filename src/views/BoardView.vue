@@ -16,7 +16,7 @@ function tasksByColumn(name) {
 <template>
     <div class="board-container">
         <header>
-            <h1>Your Kanban Board</h1>
+            <h1>Kanban Board</h1>
             <div>
                 <button @click="showNewTaskModal = true">
                     <PhCheckSquareOffset :size="30" color="white" />
@@ -68,13 +68,12 @@ function tasksByColumn(name) {
                 gap: 0.8rem;
                 padding-block: 0.6rem;
                 padding-inline: 1.2rem;
-                transition: transform 300ms;
+                transition: box-shadow 200ms;
     
                 &:hover {
-                    -webkit-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.35);
-                    -moz-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.35);
-                    box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.35);
-                    transform: rotate(-3deg);
+                    -webkit-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
+                    -moz-box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
+                    box-shadow: 0px 0px 20px 1px rgba(48, 48, 48, 0.15);
                 }
             }
 

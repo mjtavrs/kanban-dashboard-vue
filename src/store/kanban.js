@@ -4,29 +4,29 @@ export const useKanbanStore = defineStore('kanban', {
     state: () => ({
         columns: [
             { 
-                name: 'Backlog', 
-                color: 'gainsboro',
-                description: 'List of tasks not yet prioritized.'
+                name: 'New', 
+                color: '#1371b0',
+                description: 'List of tasks not yet planned.'
             },
             { 
-                name: 'To-do', 
-                color: 'darkorange',
+                name: 'Planned', 
+                color: '#99b370',
                 description: 'Tasks already prioritized and ready to be worked on.'
             },
             { 
-                name: 'In Progress', 
-                color: 'lightblue',
+                name: 'Active', 
+                color: '#7e9c4e',
                 description: 'Tasks already in progress and being worked on.'
             },
             { 
-                name: 'Testing', 
-                color: 'plum',
-                description: 'Finished tasks that are being tested.'
+                name: 'Resolution Submitted', 
+                color: '#557522',
+                description: 'Finished tasks that are ready for review.'
             },
             { 
-                name: 'Done', 
-                color: 'darkseagreen',
-                description: 'Finish and approved tasks.'
+                name: 'Complete', 
+                color: '#1f1f1f',
+                description: 'Finished and approved tasks.'
             }
         ],
         tasks: []
