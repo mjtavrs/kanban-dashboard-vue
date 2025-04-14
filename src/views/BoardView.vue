@@ -3,8 +3,10 @@ import { ref } from 'vue'
 import { useKanbanStore } from '../store/kanban'
 import { PhCheckSquareOffset } from '@phosphor-icons/vue'
 import KanbanColumn from '../components/KanbanColumn.vue'
+import NewTaskModal from '../components/NewTaskModal.vue'
 
 const kanban = useKanbanStore()
+const showNewTaskModal = ref(false)
 
 function tasksByColumn(name) {
     return kanban.tasks.filter(task => task.columnName === name)
@@ -15,7 +17,7 @@ function tasksByColumn(name) {
     <div class="board-container">
         <header>
             <h1>Kanban Board</h1>
-            <button>
+            <button @click="showNewTaskModal = true">
                 <PhCheckSquareOffset :size="30" />
                 Add new task
             </button>
@@ -29,6 +31,8 @@ function tasksByColumn(name) {
                 :tasks="tasksByColumn(column.name)"
             />
         </main>
+
+        <NewTaskModal v-if="showNewTaskModal" @close="showNewTaskModal = false" />
     </div>
 </template>
 
@@ -44,13 +48,13 @@ function tasksByColumn(name) {
         align-items: center;
         margin-bottom: 2rem;
     
-        h1 {
+        /* h1 {
     
         }
     
         button {
     
-        }
+        } */
     }
     
     main {
