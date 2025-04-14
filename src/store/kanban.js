@@ -33,7 +33,7 @@ export const useKanbanStore = defineStore('kanban', {
     }),
     actions: {
         addTask(task) {
-            const taskCount = this.tasks.filter(task => task.columnName === task.columnName).length
+            const taskCount = this.tasks.filter(t => t.columnName === task.columnName).length
 
             if (taskCount >= 6) {
                 alert(`The column "${task.columnName}" reached the 6 tasks limit.`)
