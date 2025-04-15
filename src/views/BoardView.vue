@@ -21,7 +21,7 @@ function tasksByColumn(name) {
             <div>
                 <span class="tooltip-wrapper">
                     <Tippy v-if="kanban.columnTaskCount('New') >= 6"
-                        content="You cannot add more than 6 tasks per column." theme="light-border"
+                        content="You cannot add more than 6 tasks in the 'New' column." theme="light-border"
                         placement="left-start">
                         <button disabled>
                             <PhCheckSquareOffset :size="30" color="white" />
