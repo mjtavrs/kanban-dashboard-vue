@@ -64,7 +64,7 @@ npm run dev
 Begin by building for production:
 
 ```bash
-  npm run build
+npm run build
 ```
 
 After that, deploy it to GitHub Pages:
