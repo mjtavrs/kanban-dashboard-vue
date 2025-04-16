@@ -38,7 +38,7 @@ This project was deployed using GitHub Pages with a CI/CD approach. The live pro
 First, you have to clone this repository:
 
 ```bash
-  git clone https://github.com/mjtavrs/kanban-dashboard-vue.git
+git clone https://github.com/mjtavrs/kanban-dashboard-vue.git
 ```
 
 Then, enter the project directory:
