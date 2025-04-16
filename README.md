@@ -96,6 +96,13 @@ kanban-dashboard/
         └── HomeView.vue
 ```
 
+## 🔜 Future improvements
+
+- ⚙️ **Custom board configuration view**: Allow users to define their own columns, titles and order
+- 🎨 **Column editing**: Enable title and color updates for existing columns
+- ☁️ **Cloud persistence with AWS**: Implement API Gateway, Lambda and DynamoDB for storing tasks and board configuration
+- 👥 **Team collaboration support**: Extend the app to allow team creation and task assignment
+
 ## ✏️ Author
 
 - [@mjtavrs](https://www.github.com/mjtavrs)
